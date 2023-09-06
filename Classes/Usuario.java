@@ -1,6 +1,6 @@
 public class Usuario {
     private String user;
-    private int cpf;
+    private String cpf;
     private String senha;
     private int idade;
     private String sexo;
