@@ -9,7 +9,7 @@ public class Usuario {
     private String [] decks = new String[5];
     private double cardcoins = 0;
 
-    public Usuario(String user, int cpf, String senha, int idade, String sexo, String email, int nivel, String[] decks, double cardcoins) {
+    public Usuario(String user, String cpf, String senha, int idade, String sexo, String email, int nivel, String[] decks, double cardcoins) {
         this.user = user;
         this.cpf = cpf;
         this.senha = senha;
@@ -26,7 +26,7 @@ public class Usuario {
         return user;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
