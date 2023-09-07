@@ -63,7 +63,7 @@ public class Usuario {
         this.user = user;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
