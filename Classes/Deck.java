@@ -22,7 +22,7 @@ public class Deck {
     public String getNome(){
         return nome;
     }
-    public int quantidadeDeCartas(){
+    public int quantCartas(){
         return quantCartas;
     }
     public boolean disponibilidade(){
@@ -36,7 +36,7 @@ public class Deck {
     public void setNome(String nome){
         this.nome = nome;
     }
-    public void setQuantidadeDeCartas(int quantCartas){
+    public void setQuantCartas(int quantCartas){
         this.quantCartas = quantCartas;
     }
     public void setDisponibilidade(boolean disponibilidade){
