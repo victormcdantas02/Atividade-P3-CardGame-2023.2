@@ -1,7 +1,7 @@
 public class Deck {
     private String nome;
     private int quantidadeDeCartas;
-    private boolean disponibilidade = false;
+    private boolean disponibilidade;
     private Carta[] inventario;
 
     public Deck(String nome) {
