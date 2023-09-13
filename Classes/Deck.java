@@ -1,17 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Deck {
     private String nome;
     private int quantidadeCartas;
     private boolean disponibilidade;
-    private List<Carta> cartas;
+    private Carta[] cartas;
 
     public Deck(String nome) {
         this.nome = nome;
         this.quantidadeCartas = 0;
         this.disponibilidade = false;
-        this.cartas = new ArrayList<>();
+        this.cartas = new Carta[60];;
        }
 
     //Metodo GET
@@ -24,7 +21,7 @@ public class Deck {
     public boolean disponibilidade(){
         return disponibilidade;
     }
-    public List<Carta> getCartas(){
+    public Carta[] getCartas(){
         return cartas;
     }
 
@@ -38,7 +35,7 @@ public class Deck {
     public void setDisponibilidade(boolean disponibilidade){
         this.disponibilidade = disponibilidade;
     }
-    public void setCartas(List<Carta> cartas){
+    public void setCartas(Carta[] cartas){
         this.cartas = cartas;
     }
 }
