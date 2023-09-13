@@ -3,27 +3,23 @@ import java.util.List;
 
 public class Deck {
     private String nome;
-    private int quantCartas;
+    private int quantidadeCartas;
     private boolean disponibilidade;
     private List<Carta> cartas;
 
     public Deck(String nome) {
         this.nome = nome;
-        this.quantCartas = quantCartas;
+        this.quantidadeCartas = 0;
         this.disponibilidade = false;
         this.cartas = new ArrayList<>();
-    }
-
-    public void compraDeBooster(Usuario usuario) {
-
-    }
+       }
 
     //Metodo GET
     public String getNome(){
         return nome;
     }
-    public int quantCartas(){
-        return quantCartas;
+    public int quantidadeCartas(){
+        return quantidadeCartas;
     }
     public boolean disponibilidade(){
         return disponibilidade;
@@ -36,8 +32,8 @@ public class Deck {
     public void setNome(String nome){
         this.nome = nome;
     }
-    public void setQuantCartas(int quantCartas){
-        this.quantCartas = quantCartas;
+    public void setQuantidadeCartas(int quantidadeCartas){
+        this.quantidadeCartas = quantidadeCartas;
     }
     public void setDisponibilidade(boolean disponibilidade){
         this.disponibilidade = disponibilidade;
