@@ -25,17 +25,37 @@ public class Deck {
         return cartas;
     }
 
-    //Metodo SET
-    public void setNome(String nome){
-        this.nome = nome;
+    private void atualizarDisponibilidade() {
+        if (quantidadeCartas >= 60) {
+            disponibilidade = true;
+        } else {
+            disponibilidade = false;
+        }
     }
-    public void setQuantidadeCartas(int quantidadeCartas){
-        this.quantidadeCartas = quantidadeCartas;
+
+    private boolean possuiMaximoRepetidas(Carta carta) {
+        if (carta.getNome().equals("mana")) {
+            return false; // Cartas de mana podem ter mais de 3 repetidas
+        }
+        int contador = 0;
+        for (int i = 0; i < quantidadeCartas; i++) {
+            if (cartas[i].getNome().equals(carta.getNome())) {
+                contador++;
+                if (contador >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-    public void setDisponibilidade(boolean disponibilidade){
-        this.disponibilidade = disponibilidade;
-    }
-    public void setCartas(Carta[] cartas){
-        this.cartas = cartas;
-    }
+
+    // public void adicionarCarta(Carta carta, Inventario inventario) {
+       // if (quantidadeCartas < 60 && !possuiMaximoRepetidas(carta)) {
+          //  cartas[quantidadeCartas] = carta;
+           // quantidadeCartas++;
+           // inventario.removerCarta(carta);
+       // }
+        //atualizarDisponibilidade();
+   // }
+
 }
