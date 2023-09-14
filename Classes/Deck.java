@@ -25,7 +25,7 @@ public class Deck {
         return cartas;
     }
 
-    private void atualizarDisponibilidade() {
+    public void atualizarDisponibilidade() {
         if (quantidadeCartas >= 60) {
             disponibilidade = true;
         } else {
@@ -33,7 +33,18 @@ public class Deck {
         }
     }
 
-    private boolean possuiMaximoRepetidas(Carta carta) {
+    public void adicionarCarta(Carta carta, Inventario Inventario){ // recebe carta que a gente quer e o invent para poder remover a carta dele
+        // verifica se o deck bateu o limite minimo e se a carta que a gente quer botar não esta repetindo 3 vzs exeto mana
+        if(quantidadeCartas  <  60 && !possuiMaximoRepetidas(carta)){
+            cartas[quantidadeCartas] = carta;
+            quantidadeCartas++;
+            //aqui teria que ter o metodo que remove a carta do inventario e bota no deck
+            // Inventario.removerCarta(carta);
+        }
+        atualizarDisponibilidade();
+    }
+
+    public boolean possuiMaximoRepetidas(Carta carta) {
         if (carta.getNome().equals("mana")) {
             return false; // Cartas de mana podem ter mais de 3 repetidas
         }
@@ -49,13 +60,6 @@ public class Deck {
         return false;
     }
 
-    // public void adicionarCarta(Carta carta, Inventario inventario) {
-       // if (quantidadeCartas < 60 && !possuiMaximoRepetidas(carta)) {
-          //  cartas[quantidadeCartas] = carta;
-           // quantidadeCartas++;
-           // inventario.removerCarta(carta);
-       // }
-        //atualizarDisponibilidade();
-   // }
+   
 
 }
