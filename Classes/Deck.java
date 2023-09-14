@@ -44,6 +44,10 @@ public class Deck {
         atualizarDisponibilidade();
     }
 
+    public Carta removerCarta(String nome){
+        return null;
+    }
+
     public boolean possuiMaximoRepetidas(Carta carta) {
         if (carta.getNome().equals("mana")) {
             return false; // Cartas de mana podem ter mais de 3 repetidas
