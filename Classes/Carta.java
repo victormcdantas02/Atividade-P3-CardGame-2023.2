@@ -8,7 +8,11 @@ public class Carta {
     private int custo;
     private String habilidade;
     private int quantidade;
-
+    
+    public enum Raridade {
+        Comum, Incomum, Rara, muitoRara, Epica;
+    }
+    
     public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, String habilidade, int quantidade) {
         this.nome = nome;
         this.imagem = imagem;
