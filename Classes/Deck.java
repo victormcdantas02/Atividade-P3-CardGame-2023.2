@@ -1,22 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Deck {
     private String nome;
     private int quantidadeCartas;
     private boolean disponibilidade;
-    private List<Carta> cartas;
+    private Carta[] cartas;
 
     public Deck(String nome) {
         this.nome = nome;
         this.quantidadeCartas = quantidadeCartas;
         this.disponibilidade = false;
-        this.cartas = new ArrayList<>();
-    }
-
-    public void compraDeBooster(Usuario usuario) {
-
-    }
+        this.cartas = new Carta[60];;
+       }
 
     //Metodo GET
     public String getNome(){
@@ -28,7 +21,7 @@ public class Deck {
     public boolean disponibilidade(){
         return disponibilidade;
     }
-    public List<Carta> getCartas(){
+    public Carta[] getCartas(){
         return cartas;
     }
 
@@ -36,13 +29,29 @@ public class Deck {
     public void setNome(String nome){
         this.nome = nome;
     }
-    public void setQuantidadeCartas(int quantidadeCartas){
+    public void setQuantCartas(int quantCartas){
         this.quantidadeCartas = quantidadeCartas;
     }
     public void setDisponibilidade(boolean disponibilidade){
         this.disponibilidade = disponibilidade;
     }
-    public void setCartas(List<Carta> cartas){
-        this.cartas = cartas;
+
+    public boolean possuiMaximoRepetidas(Carta carta) {
+        if (carta.getNome().equals("mana")) {
+            return false; // Cartas de mana podem ter mais de 3 repetidas
+        }
+        int contador = 0;
+        for (int i = 0; i < quantidadeCartas; i++) {
+            if (cartas[i].getNome().equals(carta.getNome())) {
+                contador++;
+                if (contador >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+
+   
+
 }

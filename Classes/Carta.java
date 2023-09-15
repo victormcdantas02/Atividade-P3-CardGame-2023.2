@@ -10,7 +10,11 @@ public class Carta {
     private int quantidade;
     
     public enum Raridade {
-        Comum, Incomum, Rara, muitoRara, Epica;
+        Comum, 
+        Incomum, 
+        Rara, 
+        MUITO_RARA, 
+        Epica;
     }
     
     public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, String habilidade, int quantidade) {

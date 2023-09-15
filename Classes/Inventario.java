@@ -1,4 +1,5 @@
 public class Inventario {
+    
     private String[] cartas; 
     private Usuario usuario; // Referência para o objeto de usuário
 
