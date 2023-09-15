@@ -17,7 +17,8 @@ public class Lobby {
 
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
-
+    }
+    
     public Lobby(int maxJogadores) {
         jogadores = new Usuario[maxJogadores];
         numJogadores = 0;

@@ -1,39 +1,73 @@
 public class Deck {
     private String nome;
     private int quantidadeCartas;
-    private boolean disponibilidade;
-    private Carta[] cartas;
+    private boolean disponibilidade = false;
+    private Carta[] cartas = new Carta[60];
 
-    public Deck(String nome) {
+    public Deck(String nome, int quantidadeCartas, boolean disponibilidade, Carta[] cartas) {
         this.nome = nome;
         this.quantidadeCartas = quantidadeCartas;
-        this.disponibilidade = false;
-        this.cartas = new Carta[60];;
-       }
+        this.disponibilidade = disponibilidade;
+        this.cartas = cartas;
+    }
 
-    //Metodo GET
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
-    public int quantidadeCartas(){
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQtdCartas() {
         return quantidadeCartas;
     }
-    public boolean disponibilidade(){
+
+    public void setQtdCartas(int qtdCartas) {
+        this.quantidadeCartas = qtdCartas;
+    }
+
+    public boolean getDisponibilidade() {
         return disponibilidade;
     }
-    public Carta[] getCartas(){
+
+    public void setDisponibilidade(boolean disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
+    public Carta[] getCartas() {
         return cartas;
     }
 
-    //Metodo SET
-    public void setNome(String nome){
-        this.nome = nome;
+    public void setCarta(Carta[] cartas) {
+        this.cartas = cartas;
     }
-    public void setQuantCartas(int quantCartas){
-        this.quantidadeCartas = quantidadeCartas;
+
+    public void atualizarDisponibilidadeCarta() {
+        if (quantidadeCartas >= 60 && quantidadeCartas < 120) {
+            disponibilidade = true;
+        } else {
+            disponibilidade = false;
+        }
     }
-    public void setDisponibilidade(boolean disponibilidade){
-        this.disponibilidade = disponibilidade;
+
+    public void adicionarCarta(Carta carta, Inventario inventario) {
+        // Verifica se o deck não atingiu o limite máximo e se a carta não está repetindo 3 vezes (exceto mana)
+        if (quantidadeCartas < 60 && !possuiMaximoRepetidas(carta)) {
+            cartas[quantidadeCartas] = carta;
+            quantidadeCartas++;
+
+            // Remove a carta do inventário
+            boolean removidaDoInventário = inventario.removerCarta(carta.getNome());
+
+            // Verifica se a carta foi removida com sucesso do inventário
+            if (!removidaDoInventário) {
+                System.out.println("A carta não foi encontrada no inventário.");
+                // Você pode lidar com esse cenário de acordo com sua lógica de negócios.
+            }
+        }
+
+        atualizarDisponibilidadeCarta();
     }
 
     public boolean possuiMaximoRepetidas(Carta carta) {
@@ -51,7 +85,4 @@ public class Deck {
         }
         return false;
     }
-
-   
-
 }

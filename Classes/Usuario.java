@@ -1,98 +1,109 @@
 public class Usuario {
-    private String user;
+    private String nome;
     private String cpf;
     private String senha;
-    private int idade;
     private String sexo;
     private String email;
     private int nivel = 1;
-    private String [] decks = new String[5];
-    private double cardcoins = 0;
+    private int cardCoins = 0;
+    private Deck[] decks;
+    private Inventario inventario;
+    private int idade;
+    private Deck deckAtivo; // Adicione um atributo para representar o deck ativo do usuário
 
-    public Usuario(String user, String cpf, String senha, int idade, String sexo, String email, int nivel, String[] decks, double cardcoins) {
-        this.user = user;
+    public Usuario(String nome, String cpf, String senha, String sexo, String email, int idade) {
+        this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
-        this.idade = idade;
         this.sexo = sexo;
         this.email = email;
-        this.nivel = nivel;
-        this.decks = decks;
-        this.cardcoins = cardcoins;
+        this.idade = idade;
+        this.decks = new Deck[5];
+        this.inventario = new Inventario(new String[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
-
-    //////////////////////////////////
-    public String getUser() {
-        return user;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public int getNivel() {
         return nivel;
     }
 
-    public String[] getDecks() {
+    public int getCardCoins() {
+        return cardCoins;
+    }
+
+    public void setCardCoins(int cardCoins) {
+        this.cardCoins = cardCoins;
+    }
+
+    public Deck[] getDecks() {
         return decks;
     }
 
-    public double getCardcoins() {
-        return cardcoins;
+    public Inventario getInventario() {
+        return inventario;
     }
 
-    /////////////////////////////
-    public void setUser(String user) {
-        this.user = user;
+    public Deck getDeckAtivo() {
+        return deckAtivo;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void selecionarDeckAtivo(int indice) {
+        if (indice >= 0 && indice < decks.length) {
+            deckAtivo = decks[indice];
+            System.out.println("Deck ativo selecionado: " + deckAtivo.getNome());
+        } else {
+            System.out.println("Índice de deck inválido.");
+        }
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public boolean adicionarDeck(Deck deck) {
+        // Verifica se o usuário já possui o número máximo de decks permitidos (5)
+        if (decks.length >= 5) {
+            System.out.println("Você já atingiu o número máximo de decks permitidos.");
+            return false; // Não foi possível adicionar o deck
+        }
+
+        // Verifica se o deck já está na lista
+        for (Deck existingDeck : decks) {
+            if (existingDeck != null && existingDeck.getNome().equals(deck.getNome())) {
+                System.out.println("Este deck já está na sua lista de decks.");
+                return false; // Não foi possível adicionar o deck
+            }
+        }
+
+        // Encontra um espaço vazio no vetor de decks
+        for (int i = 0; i < decks.length; i++) {
+            if (decks[i] == null) {
+                decks[i] = deck; // Adiciona o deck ao vetor de decks
+                System.out.println("Deck adicionado com sucesso.");
+                return true; // Deck adicionado com sucesso
+            }
+        }
+
+        return false; // Não foi possível adicionar o deck (nenhum espaço vazio encontrado)
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void adicionarCartaAoDeck(Carta carta) {
+        // Verifique se o deck ativo está definido
+        if (deckAtivo != null) {
+            deckAtivo.adicionarCarta(carta, inventario); // Chame o método do Deck para adicionar a carta
+        } else {
+            System.out.println("Deck ativo não definido. Selecione um deck ativo primeiro.");
+        }
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public boolean possuiMaximoRepetidas(Carta carta) {
+        // Verifique se o deck ativo está definido
+        if (deckAtivo != null) {
+            return deckAtivo.possuiMaximoRepetidas(carta); // Chame o método do Deck para verificar a repetição
+        } else {
+            System.out.println("Deck ativo não definido. Selecione um deck ativo primeiro.");
+            return false; // Por padrão, considere que não possui repetidas se o deck ativo não estiver definido
+        }
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // Outros métodos e getters/setters
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    @Override
+    public String toString() {
+        return "Nome: " + nome + "\nCPF: " + cpf + "\nNível: " + nivel + "\nCardCoins: " + cardCoins;
     }
-
-    public void setDecks(String[] decks) {
-        this.decks = decks;
-    }
-
-    public void setCardcoins(double cardcoins) {
-        this.cardcoins = cardcoins;
-    }
-    
 }

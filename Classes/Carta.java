@@ -7,7 +7,9 @@ public class Carta {
     private int defesa;
     private int custo;
     private String habilidade;
-    private int quantidade;
+    private int valorEmCardCoins; // Novo atributo
+
+
     
     public enum Raridade {
         Comum, 
@@ -17,7 +19,7 @@ public class Carta {
         Epica;
     }
     
-    public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, String habilidade, int quantidade) {
+    public Carta(String nome, String imagem, String tipo, String raridade, String habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
@@ -26,81 +28,65 @@ public class Carta {
         this.defesa = defesa;
         this.custo = custo;
         this.habilidade = habilidade;
-        this.quantidade = quantidade;
+        this.valorEmCardCoins = valorEmCardCoins; // Inicializa o valor em cardCoins
     }
 
-    /////////////////////////
     public String getNome() {
         return nome;
     }
-
-    public String getImagem() {
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+    public String getImagem(){
         return imagem;
     }
-
+    public void setImagem(String imagem){
+        this.imagem = imagem;
+    }
     public String getTipo() {
         return tipo;
     }
+    public int getValorEmCardCoins() {
+        return valorEmCardCoins;
+    } 
 
-    public String getRaridade() {
-        return raridade;
-    }
-
-    public int getAtaque() {
-        return ataque;
-    }
-
-    public int getDefesa() {
-        return defesa;
-    }
-
-    public int getCusto() {
-        return custo;
-    }
-
-    public String getHabilidade() {
-        return habilidade;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    ////////////////////
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
+    /////////////////////////
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    public void setRaridade(String raridade) {
-        this.raridade = raridade;
+    public String getRaridade (){
+        return raridade;
     }
-
+    public void setRaridade(String raridade){
+       this.raridade = raridade; 
+    }
+    public int getAtaque(){
+        return ataque;
+    }
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-
-    public void setDefesa(int defesa) {
-        this.defesa = defesa;
+    public int getDefesa() {
+        return defesa;
     }
-
-    public void setCusto(int custo) {
+    public void setDefesa(int defesa){
+         this.defesa = defesa;
+    }
+    public int getCusto (){
+        return custo;
+    }
+    public void setCusto(int custo){
         this.custo = custo;
     }
-
-    public void setHabilidade(String habilidade) {
+    public String getHabilidade (){
+        return habilidade;
+    }
+    public void setHabilidade ( String habilidade){
         this.habilidade = habilidade;
     }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public boolean estaDisponivel() {
+        return false;
     }
 
 }
