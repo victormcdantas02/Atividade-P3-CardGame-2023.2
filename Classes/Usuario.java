@@ -2,13 +2,13 @@ public class Usuario {
     private String nome;
     private String cpf;
     private String senha;
+    private int idade;
     private String sexo;
     private String email;
     private int nivel = 1;
     private int cardCoins = 0;
     private Deck[] decks;
     private Inventario inventario;
-    private int idade;
     private Deck deckAtivo; // Adicione um atributo para representar o deck ativo do usuário
 
     public Usuario(String nome, String cpf, String senha, String sexo, String email, int idade) {
@@ -21,6 +21,32 @@ public class Usuario {
         this.decks = new Deck[5];
         this.inventario = new Inventario(new String[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+    public String getSexo() {
+        return sexo;
+    }
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getNivel() {
         return nivel;
     }
@@ -100,10 +126,12 @@ public class Usuario {
         }
     }
 
-    // Outros métodos e getters/setters
 
     @Override
     public String toString() {
         return "Nome: " + nome + "\nCPF: " + cpf + "\nNível: " + nivel + "\nCardCoins: " + cardCoins;
     }
+	public int getPontosVida() {
+		return 0;
+	}
 }
