@@ -58,7 +58,7 @@ public class Loja {
         }
     }
 
-    private Carta gerarCartaAleatoria() {
+    public Carta gerarCartaAleatoria() {
         // Simulação de geração de uma carta aleatória
         Random random = new Random();
         String[] nomesCartas = {"Carta 1", "Carta 2", "Carta 3", "Carta 4", "Carta 5"};
