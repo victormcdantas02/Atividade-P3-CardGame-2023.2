@@ -21,13 +21,19 @@ public class Usuario {
         this.decks = new Deck[5];
         this.inventario = new Inventario(new String[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
+    public String getNome(){
+        return nome;
+    }
+     public void setNome(String nome) {
+        this.nome = nome;
+    }
     public String getSenha() {
         return senha;
     }
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
     public int getIdade() {
         return idade;
     }

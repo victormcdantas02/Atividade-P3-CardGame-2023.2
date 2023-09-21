@@ -8,16 +8,6 @@ public class Carta {
     private int custo;
     private String habilidade;
     private int valorEmCardCoins; // Novo atributo
-
-
-    
-    public enum Raridade {
-        Comum, 
-        Incomum, 
-        Rara, 
-        MUITO_RARA, 
-        Epica;
-    }
     
     public Carta(String nome, String imagem, String tipo, String raridade, String habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;

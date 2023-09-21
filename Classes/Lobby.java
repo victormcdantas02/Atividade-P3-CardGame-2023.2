@@ -46,5 +46,8 @@ public class Lobby {
     }
 
     private void iniciarPartida(Usuario player, Usuario adversario) {
+        System.out.println("Iniciando partida entre " + player.getNome() + " e " + adversario.getNome());
+    
+        
     }
 }
