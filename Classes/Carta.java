@@ -2,14 +2,17 @@ public class Carta {
     private String nome;
     private String imagem;
     private String tipo;
-    private String raridade;
+    private Raridade raridade;
     private int ataque;
     private int defesa;
     private int custo;
-    private String habilidade;
-    private int valorEmCardCoins; // Novo atributo
-    
-    public Carta(String nome, String imagem, String tipo, String raridade, String habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
+    private int quantidade; // Novo atributo para controlar a quantidade
+
+    private int valorEmCardCoins;
+
+    private HabilidadeC habilidade; // Correção no nome do enum
+
+    public Carta(String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
@@ -17,66 +20,99 @@ public class Carta {
         this.ataque = ataque;
         this.defesa = defesa;
         this.custo = custo;
-        this.habilidade = habilidade;
-        this.valorEmCardCoins = valorEmCardCoins; // Inicializa o valor em cardCoins
+        this.habilidade = habilidade; 
+        this.quantidade = 0; // Inicializa a quantidade como 0
+        this.valorEmCardCoins = valorEmCardCoins;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
+    public boolean podeAdicionarAoDeck() {
+        // Verifica se a carta é uma mana ou se a quantidade no deck ainda não atingiu 3
+        return "mana".equalsIgnoreCase(tipo) || quantidade < 3;
     }
 
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome){
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getImagem(){
+
+    public String getImagem() {
         return imagem;
     }
-    public void setImagem(String imagem){
+
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
+
     public String getTipo() {
         return tipo;
     }
-    public int getValorEmCardCoins() {
-        return valorEmCardCoins;
-    } 
-
-    /////////////////////////
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public String getRaridade (){
+
+    public Raridade getRaridade() {
         return raridade;
     }
-    public void setRaridade(String raridade){
-       this.raridade = raridade; 
+
+    public void setRaridade(Raridade raridade) {
+        this.raridade = raridade;
     }
-    public int getAtaque(){
+
+    public int getAtaque() {
         return ataque;
     }
+
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
+
     public int getDefesa() {
         return defesa;
     }
-    public void setDefesa(int defesa){
-         this.defesa = defesa;
+
+    public void setDefesa(int defesa) {
+        this.defesa = defesa;
     }
-    public int getCusto (){
+
+    public int getCusto() {
         return custo;
     }
-    public void setCusto(int custo){
+
+    public void setCusto(int custo) {
         this.custo = custo;
     }
-    public String getHabilidade (){
+
+    public HabilidadeCart getHabilidade() {
         return habilidade;
     }
-    public void setHabilidade ( String habilidade){
+
+    public void setHabilidade(HabilidadeCart habilidade) {
         this.habilidade = habilidade;
     }
+
     public boolean estaDisponivel() {
         return false;
     }
 
+    //
+
+    public int getValorEmCardCoins() {
+        return valorEmCardCoins;
+    }
+
+    public void setValorEmCardCoins(int valorEmCardCoins) {
+        this.valorEmCardCoins = valorEmCardCoins;
+    }
 }
