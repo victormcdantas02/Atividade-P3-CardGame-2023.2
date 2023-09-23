@@ -1,19 +1,19 @@
 public class Inventario {
-    private String[] cartas = new String[200];
+    private Carta[] cartas = new Carta[200];
     private int nivelAtual = 1;
     private int cardCoins = 0;
 
-    public Inventario(String[] cartas, int nivelAtual, int cardCoins) {
+    public Inventario(Carta[] cartas, int nivelAtual, int cardCoins) {
         this.cartas = cartas;
         this.nivelAtual = nivelAtual;
         this.cardCoins = cardCoins;
     }
 
-    public String[] getCartas() {
+    public Carta[] getCartas() {
         return cartas;
     }
 
-    public void setCartas(String[] cartas) {
+    public void setCartas(Carta [] cartas) {
         this.cartas = cartas;
     }
 
@@ -33,13 +33,32 @@ public class Inventario {
         this.cardCoins = cardcoins;
     }
 
-    public boolean removerCarta(String nomeCarta) {
+    public boolean removerCarta(Carta carta) {
         for (int i = 0; i < cartas.length; i++) {
-            if (cartas[i] != null && cartas[i].equals(nomeCarta)) {
+            if (cartas[i] != null && cartas[i].equals(carta)) {
                 cartas[i] = null;
                 return true; // Carta removida com sucesso
             }
         }
         return false; // Carta não encontrada no inventário
+    }
+
+    public boolean estaCheio() {
+        for (Carta carta : cartas) {
+            if (carta == null) {
+                return false; // Se encontrar uma posição vazia, o inventário não está cheio
+            }
+        }
+        return true; // Se todas as posições estiverem ocupadas, o inventário está cheio
+    }
+
+    public boolean adicionarCarta(Carta carta) {
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] == null) {
+                cartas[i] = carta;
+                return true; // Carta adicionada com sucesso
+            }
+        }
+        return false; // Não foi possível adicionar a carta (inventário cheio)
     }
 }
