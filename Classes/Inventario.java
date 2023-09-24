@@ -9,6 +9,9 @@ public class Inventario {
         this.cardCoins = cardCoins;
     }
 
+    public Inventario(String[] strings, int nivelAtual2, int cardCoins2) {
+    }
+
     public Carta[] getCartas() {
         return cartas;
     }
