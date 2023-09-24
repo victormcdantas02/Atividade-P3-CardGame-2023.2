@@ -18,6 +18,4 @@ public class Raridade {
         return probabilidade;
         }
     }
-
-    public static final String INCOMUM = null;
 }
