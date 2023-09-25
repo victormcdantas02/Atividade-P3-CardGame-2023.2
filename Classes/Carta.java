@@ -6,9 +6,13 @@ public class Carta {
     private int ataque;
     private int defesa;
     private int custo;
+    private HabilidadeC habilidade;
     private int quantidade; // Novo atributo para controlar a quantidade
     private int valorEmCardCoins;
+<<<<<<< HEAD
     private HabilidadeC habilidade; // Correção no nome do enum
+=======
+>>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136
 
     public Carta(String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;
@@ -18,7 +22,7 @@ public class Carta {
         this.ataque = ataque;
         this.defesa = defesa;
         this.custo = custo;
-        this.habilidade = habilidade; 
+        this.habilidade = habilidade;
         this.quantidade = 0; // Inicializa a quantidade como 0
         this.valorEmCardCoins = valorEmCardCoins;
     }

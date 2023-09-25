@@ -3,7 +3,11 @@ import java.util.Random;
 public class Loja {
     private String numeroCartao;
     private String codigoVerificador;
+<<<<<<< HEAD
     private boolean promocao = false;
+=======
+    private boolean promocao;
+>>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136
 
     public Loja(String numeroCartao, String codigoVerificador) {
         this.numeroCartao = numeroCartao;
