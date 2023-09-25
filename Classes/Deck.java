@@ -1,88 +1,119 @@
 public class Deck {
     private String nome;
-    private int quantidadeCartas;
     private boolean disponibilidade = false;
-    private Carta[] cartas = new Carta[60];
+    private Carta[] cartas = new Carta[60]; // Tamanho máximo do deck
 
-    public Deck(String nome, int quantidadeCartas, boolean disponibilidade, Carta[] cartas) {
+    public Deck(String nome) {
         this.nome = nome;
-        this.quantidadeCartas = quantidadeCartas;
-        this.disponibilidade = disponibilidade;
-        this.cartas = cartas;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getQtdCartas() {
-        return quantidadeCartas;
-    }
-
-    public void setQtdCartas(int qtdCartas) {
-        this.quantidadeCartas = qtdCartas;
-    }
-
-    public boolean getDisponibilidade() {
+    public boolean isDisponivel() {
         return disponibilidade;
-    }
-
-    public void setDisponibilidade(boolean disponibilidade) {
-        this.disponibilidade = disponibilidade;
     }
 
     public Carta[] getCartas() {
         return cartas;
     }
 
-    public void setCarta(Carta[] cartas) {
-        this.cartas = cartas;
-    }
-
-    public void atualizarDisponibilidadeCarta() {
-        if (quantidadeCartas >= 60 && quantidadeCartas < 120) {
+    private void verificarDisponibilidade() {
+        // Verificar se o deck atingiu a disponibilidade
+        if (cartas.length >= 60 && !possuiMaximoRepetidas()) {
             disponibilidade = true;
-        } else {
-            disponibilidade = false;
+            System.out.println("O deck agora está disponível para uso em partidas.");
         }
     }
 
-    public void adicionarCarta(Carta carta, Inventario inventario) {
-        // Verifica se o deck não atingiu o limite máximo e se a carta não está repetindo 3 vezes (exceto mana)
-        if (quantidadeCartas < 60 && !possuiMaximoRepetidas(carta)) {
-            cartas[quantidadeCartas] = carta;
-            quantidadeCartas++;
+    public boolean adicionarCarta(Carta carta, Inventario inventario) {
+        // Verificar se o deck já está disponível
+        if (disponibilidade) {
+            System.out.println("Este deck já está disponível para uso.");
+            return false;
+        }
 
-            // Remove a carta do inventário
-            boolean removidaDoInventário = inventario.removerCarta(carta.getNome());
+        // Verificar se o deck já contém 60 cartas
+        if (cartas.length >= 60) {
+            System.out.println("Este deck já contém o número máximo de cartas (60).");
+            return false;
+        }
 
-            // Verifica se a carta foi removida com sucesso do inventário
-            if (!removidaDoInventário) {
-                System.out.println("A carta não foi encontrada no inventário.");
-                // Você pode lidar com esse cenário de acordo com sua lógica de negócios.
+        // Verificar se o inventário possui a carta
+        if (inventario.removerCarta(carta)) {
+            // Adicionar a carta ao deck
+            for (int i = 0; i < cartas.length; i++) {
+                if (cartas[i] == null) {
+                    cartas[i] = carta;
+                    System.out.println("Carta adicionada ao deck com sucesso.");
+                    verificarDisponibilidade();
+                    return true;
+                }
+            }
+        } else {
+            System.out.println("Você não possui esta carta no inventário.");
+        }
+
+        return false;
+    }
+
+    public boolean removerCarta(Carta carta, Inventario inventario) {
+        // Verificar se o deck já está disponível
+        if (disponibilidade) {
+            System.out.println("Este deck já está disponível para uso.");
+            return false;
+        }
+    
+        // Verificar se o deck contém a carta
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] != null && cartas[i].getNome().equalsIgnoreCase(carta.getNome())) {
+                // Remover a carta do deck
+                cartas[i] = null;
+                System.out.println("Carta removida do deck com sucesso.");
+    
+                // Adicionar a carta de volta ao inventário
+                inventario.adicionarCarta(carta);
+                verificarDisponibilidade();
+                return true;
             }
         }
-
-        atualizarDisponibilidadeCarta();
+    
+        System.out.println("Esta carta não está no deck.");
+        return false;
     }
 
-    public boolean possuiMaximoRepetidas(Carta carta) {
-        if (carta.getNome().equals("mana")) {
-            return false; // Cartas de mana podem ter mais de 3 repetidas
-        }
-        int contador = 0;
-        for (int i = 0; i < quantidadeCartas; i++) {
-            if (cartas[i].getNome().equals(carta.getNome())) {
-                contador++;
-                if (contador >= 3) {
+    public boolean possuiMaximoRepetidas() {
+        // Verificar se o deck possui mais de 3 cartas repetidas (exceto mana)
+        int contadorMana = 0;
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                if (carta.getNome().equalsIgnoreCase("mana")) {
+                    contadorMana++;
+                }
+                if (contadorMana >= 3) {
                     return true;
                 }
             }
         }
         return false;
     }
+
+    public boolean possuiMaximoRepetidas(Carta carta) {
+        if ("mana".equalsIgnoreCase(carta.getTipo())) {
+            return false; // Cartas de mana podem ter mais de 3 repetidas
+        }
+        
+        int contador = 0;
+        for (Carta cartaNoDeck : cartas) {
+            if (cartaNoDeck != null && cartaNoDeck.getNome().equalsIgnoreCase(carta.getNome())) {
+                contador++;
+                if (contador >= cartaNoDeck.getQuantidade()) {
+                    return true; // O deck atingiu o número máximo de repetições desta carta
+                }
+            }
+        }
+        return false; // O deck não atingiu o número máximo de repetições desta carta
+    }
+
 }

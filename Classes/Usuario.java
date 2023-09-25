@@ -19,7 +19,7 @@ public class Usuario {
         this.email = email;
         this.idade = idade;
         this.decks = new Deck[5];
-        this.inventario = new Inventario(new String[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
+        this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
     public String getNome(){
         return nome;
@@ -116,11 +116,19 @@ public class Usuario {
     public void adicionarCartaAoDeck(Carta carta) {
         // Verifique se o deck ativo está definido
         if (deckAtivo != null) {
-            deckAtivo.adicionarCarta(carta, inventario); // Chame o método do Deck para adicionar a carta
+            // Tente adicionar a carta ao deck ativo
+            boolean cartaAdicionada = deckAtivo.adicionarCarta(carta, inventario);
+
+            if (cartaAdicionada) {
+                System.out.println("Carta adicionada ao deck com sucesso.");
+            } else {
+                System.out.println("Não foi possível adicionar a carta ao deck.");
+            }
         } else {
             System.out.println("Deck ativo não definido. Selecione um deck ativo primeiro.");
         }
     }
+    
 
     public boolean possuiMaximoRepetidas(Carta carta) {
         // Verifique se o deck ativo está definido
