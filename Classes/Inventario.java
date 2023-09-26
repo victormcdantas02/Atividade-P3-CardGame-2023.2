@@ -9,12 +9,9 @@ public class Inventario {
         this.cardCoins = cardCoins;
     }
 
-<<<<<<< HEAD
-=======
     public Inventario(String[] strings, int nivelAtual2, int cardCoins2) {
     }
 
->>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136
     public Carta[] getCartas() {
         return cartas;
     }

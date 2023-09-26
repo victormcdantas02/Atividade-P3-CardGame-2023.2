@@ -9,10 +9,6 @@ public class Carta {
     private HabilidadeC habilidade;
     private int quantidade; // Novo atributo para controlar a quantidade
     private int valorEmCardCoins;
-<<<<<<< HEAD
-    private HabilidadeC habilidade; // Correção no nome do enum
-=======
->>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136
 
     public Carta(String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;

@@ -1,19 +1,14 @@
-<<<<<<< HEAD
+import java.util.Random;
 
-=======
->>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136
-public class BoosterPlus extends Booster{
-    public Carta gerarCartaAleatoria(Inventario inventario) {
-        // Lógica para gerar uma carta a partir do booster especial
-        // Aqui você pode incluir a probabilidade de obter cartas únicas
-        // Certifique-se de implementar essa lógica de acordo com seus requisitos.
-<<<<<<< HEAD
-        return null; // Implemente a lógica real aqui
+public class BoosterPlus {
+    public Carta gerarCartaUnica() {
+        Random random = new Random();
+        double valorAleatorio = random.nextDouble() * 100;
+
+        if (valorAleatorio <= 1.0) { // 1% de probabilidade de ser única
+            return new CartaUnique("NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 1, 1, 1, 1);
+        } else {
+            return null; // Não é uma carta única
+        }
     }
 }
-
-=======
-        return null;// Implemente a lógica real aqui
-}
-}
->>>>>>> 1fbf22bd2aa7b441c09c151f873a553bab4ec136

@@ -1,12 +1,20 @@
-
-
 import java.util.Random;
 
 public class Booster {
     public Carta gerarCartaAleatoria(Inventario inventario) {
-        // Lógica para gerar uma carta aleatória a partir do booster comum
-        // Aqui você pode incluir a probabilidade comum de raridades
-        // Certifique-se de implementar essa lógica de acordo com seus requisitos.
-        return null; // Implemente a lógica real aqui
+        Random random = new Random();
+        double valorAleatorio = random.nextDouble() * 100;
+
+        if (valorAleatorio <= Raridade.COMUM.getProbabilidade()) {
+            return new Carta("NomeComum", "ImagemComum", "TipoComum", Raridade.COMUM, null, 1, 1, 1, 1);
+        } else if (valorAleatorio <= Raridade.INCOMUM.getProbabilidade()) {
+            return new Carta("NomeIncomum", "ImagemIncomum", "TipoIncomum", Raridade.INCOMUM, null, 2, 2, 2, 2);
+        } else if (valorAleatorio <= Raridade.RARA.getProbabilidade()) {
+            return new Carta("NomeRara", "ImagemRara", "TipoRara", Raridade.RARA, null, 3, 3, 3, 3);
+        } else if (valorAleatorio <= Raridade.MUITO_RARA.getProbabilidade()) {
+            return new Carta("NomeMuitoRara", "ImagemMuitoRara", "TipoMuitoRara", Raridade.MUITO_RARA, null, 4, 4, 4, 4);
+        } else {
+            return new CartaUnique("NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 5, 5, 5, 5);
+        }
     }
 }
