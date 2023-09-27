@@ -7,6 +7,12 @@ public class Arena {
     private Carta[][] campoJogador2;
     private int pontosVidaJogador1;
     private int pontosVidaJogador2;
+    private Carta[] maoJogador1;
+    private Carta[] maoJogador2;
+    private int manaMaximaJogador1;
+    private int manaMaximaJogador2;
+    private Carta[] cemiterioJogador1;
+    private Carta[] cemiterioJogador2;
 
     public Arena(Usuario jogador1, Usuario jogador2, Deck deckJogador1, Deck deckJogador2) {
         this.jogador1 = jogador1;
@@ -17,6 +23,12 @@ public class Arena {
         this.campoJogador2 = new Carta[2][5];
         this.pontosVidaJogador1 = 20;
         this.pontosVidaJogador2 = 20;
+        this.maoJogador1 = new Carta[11]; // 0 to 10 positions
+        this.maoJogador2 = new Carta[11]; // 0 to 10 positions
+        this.manaMaximaJogador1 = 0;
+        this.manaMaximaJogador2 = 0;
+        this.cemiterioJogador1 = new Carta[100];
+        this.cemiterioJogador2 = new Carta[100];
     }
 
     public Usuario getJogador1(){
@@ -74,4 +86,45 @@ public class Arena {
     public int getPontosVidaJogador2(){
         return pontosVidaJogador2;
     }
-   }
+     public Carta[] getMaoJogador1() {
+        return maoJogador1;
+    }
+
+    public void setMaoJogador1(Carta[] maoJogador1) {
+        this.maoJogador1 = maoJogador1;
+    }
+    public Carta[] getMaoJogador2() {
+        return maoJogador2;
+    }
+
+    public void setMaoJogador2(Carta[] maoJogador2) {
+        this.maoJogador2 = maoJogador2;
+    }
+    public int getManaMaximaJogador1() {
+        return manaMaximaJogador1;
+    }
+    public void setManaMaximaJogador1(int manaMaximaJogador1) {
+        this.manaMaximaJogador1 = manaMaximaJogador1;
+    }
+    public int getManaMaximaJogador2() {
+        return manaMaximaJogador2;
+    }
+    public void setManaMaximaJogador2(int manaMaximaJogador2) {
+        this.manaMaximaJogador2 = manaMaximaJogador2;
+    }
+    public Carta[] getCemiterioJogador1() {
+        return cemiterioJogador1;
+    }
+
+    public void setCemiterioJogador1(Carta[] cemiterioJogador1) {
+        this.cemiterioJogador1 = cemiterioJogador1;
+    }
+
+    public Carta[] getCemiterioJogador2() {
+        return cemiterioJogador2;
+    }
+
+    public void setCemiterioJogador2(Carta[] cemiterioJogador2) {
+        this.cemiterioJogador2 = cemiterioJogador2;
+    }
+}
