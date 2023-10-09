@@ -168,4 +168,62 @@ public class Arena {
         int jogadorQueComeca = random.nextInt(2) + 1;
         return jogadorQueComeca;
     }
+
+    public void turno(int jogador) {
+        if (jogador == 1) {
+            System.out.println("Turno do Jogador 1");
+            realizarCompra(jogador);
+            realizarPosicionamento(jogador);
+            realizarAtaque(jogador);
+        } else if (jogador == 2) {
+            System.out.println("Turno do Jogador 2");
+            realizarCompra(jogador);
+            realizarPosicionamento(jogador);
+            realizarAtaque(jogador);
+        } else {
+            throw new IllegalArgumentException("Número de jogador inválido.");
+        }
+    }
+
+    private void realizarCompra(int jogador) {
+        Deck deckDoJogador;
+        Carta[] maoDoJogador;
+        int manaMaximaDoJogador;
+
+        if (jogador == 1) {
+            deckDoJogador = deckJogador1;
+            maoDoJogador = maoJogador1;
+            manaMaximaDoJogador = manaMaximaJogador1;
+        } else if (jogador == 2) {
+            deckDoJogador = deckJogador2;
+            maoDoJogador = maoJogador2;
+            manaMaximaDoJogador = manaMaximaJogador2;
+        } else {
+            throw new IllegalArgumentException("Número de jogador inválido.");
+        }
+
+        if (!deckDoJogador.isEmpty()) {
+            Random random = new Random();
+            int indiceAleatorio = random.nextInt(deckDoJogador.size());
+            Carta cartaComprada = deckDoJogador.getCarta(indiceAleatorio);
+            for (int i = 0; i < maoDoJogador.length; i++) {
+                if (maoDoJogador[i] == null) {
+                    maoDoJogador[i] = cartaComprada;
+                    break;
+                }
+            }
+            deckDoJogador.removerCarta(indiceAleatorio);
+            manaMaximaDoJogador += 1;
+        } else {
+            System.out.println("O deck está vazio. Não é possível comprar mais cartas.");
+        }
+    }
+
+    private void realizarPosicionamento(int jogador) {
+        // Ilogica do posicionamente 
+    }
+
+    private void realizarAtaque(int jogador) {
+        // lógica de ataque
+    }   
 }
