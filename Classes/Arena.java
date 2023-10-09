@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Arena {
     private Usuario jogador1;
     private Usuario jogador2;
@@ -126,5 +128,44 @@ public class Arena {
 
     public void setCemiterioJogador2(Carta[] cemiterioJogador2) {
         this.cemiterioJogador2 = cemiterioJogador2;
+    }
+
+    public void sacarCartas(int jogador){
+        int numeroDeCartasASacar = 7;
+
+        Random random = new Random();
+
+        Carta[] maoDoJogador;
+        Deck deckDoJogador;
+        if (jogador == 1) {
+            maoDoJogador = maoJogador1;
+            deckDoJogador = deckJogador1;
+        } else if (jogador == 2) {
+            maoDoJogador = maoJogador2;
+            deckDoJogador = deckJogador2;
+        } else {
+            throw new IllegalArgumentException("Número de jogador inválido.");
+        }
+
+        for (int i = 0; i < maoDoJogador.length; i++) {
+            maoDoJogador[i] = null;
+        }
+
+        for (int i = 0; i < numeroDeCartasASacar; i++) {
+            if (deckDoJogador.isEmpty()) {
+                deckDoJogador.embaralharCemiterio();
+            }
+
+            int cartaIndex = random.nextInt(deckDoJogador.size());
+            Carta cartaSacada = deckDoJogador.getCarta(cartaIndex);
+            maoDoJogador[i] = cartaSacada;
+            deckDoJogador.removerCarta(cartaIndex);
+        }
+    }
+
+    public int inicio() {
+        Random random = new Random();
+        int jogadorQueComeca = random.nextInt(2) + 1;
+        return jogadorQueComeca;
     }
 }
