@@ -25,8 +25,8 @@ public class Arena {
         this.campoJogador2 = new Carta[2][5];
         this.pontosVidaJogador1 = 20;
         this.pontosVidaJogador2 = 20;
-        this.maoJogador1 = new Carta[11]; // 0 to 10 positions
-        this.maoJogador2 = new Carta[11]; // 0 to 10 positions
+        this.maoJogador1 = new Carta[11]; 
+        this.maoJogador2 = new Carta[11]; 
         this.manaMaximaJogador1 = 0;
         this.manaMaximaJogador2 = 0;
         this.cemiterioJogador1 = new Carta[100];

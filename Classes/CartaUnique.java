@@ -1,19 +1,26 @@
+import java.util.Random;
+
 public class CartaUnique extends Carta {
+    private HabilidadeC habilidadeExtra;
+
     public CartaUnique(String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         super(nome, imagem, tipo, raridade, habilidade, ataque + 1, defesa + 1, custo, valorEmCardCoins);
-        // Adicione uma habilidade padrão extra aleatória
-        this.setHabilidade(gerarHabilidadeAleatoria());
+        this.habilidadeExtra = gerarHabilidadeExtraAleatoria();
     }
 
-    // Método para gerar uma habilidade aleatória
-    private HabilidadeC gerarHabilidadeAleatoria() {
-        HabilidadeC.HabilidadeCart[] habilidades = HabilidadeC.HabilidadeCart.values();
-        int indiceAleatorio = (int) (Math.random() * habilidades.length); // Calcula o índice aleatório
+    public HabilidadeC getHabilidadeExtra() {
+        return habilidadeExtra;
+    }
 
-        // Obtém uma habilidade com base no índice aleatório
-        HabilidadeC habilidade = new HabilidadeC();
-        habilidade.setHabilidadeCart(habilidades[indiceAleatorio]);
+    public void setHabilidadeExtra(HabilidadeC habilidadeExtra) {
+        this.habilidadeExtra = habilidadeExtra;
+    }
 
-        return habilidade;
+    private HabilidadeC gerarHabilidadeExtraAleatoria() {
+        // Adicione a lógica para gerar uma habilidade extra aleatória aqui
+        HabilidadeC [] habilidades = HabilidadeC.values();
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(habilidades.length);
+        return habilidades[indiceAleatorio];
     }
 }
