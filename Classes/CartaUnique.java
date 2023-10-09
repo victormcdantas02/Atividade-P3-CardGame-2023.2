@@ -17,7 +17,6 @@ public class CartaUnique extends Carta {
     }
 
     private HabilidadeC gerarHabilidadeExtraAleatoria() {
-        // Adicione a lógica para gerar uma habilidade extra aleatória aqui
         HabilidadeC [] habilidades = HabilidadeC.values();
         Random random = new Random();
         int indiceAleatorio = random.nextInt(habilidades.length);
