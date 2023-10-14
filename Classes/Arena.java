@@ -263,7 +263,6 @@ public class Arena {
         }
     }
     
-
     private void realizarAtaque(int jogador) {
         Carta[][] campoAtacante;
         Carta[][] campoDefensor;
@@ -277,21 +276,17 @@ public class Arena {
         } else {
             throw new IllegalArgumentException("Número de jogador inválido.");
         }
-        
-        // Realize o ataque para cada posição no campo de batalha
+    
         for (int linha = 0; linha < campoAtacante.length; linha++) {
             for (int coluna = 0; coluna < campoAtacante[linha].length; coluna++) {
                 Carta cartaAtacante = campoAtacante[linha][coluna];
                 
                 if (cartaAtacante != null) {
-                    // Verifique se a carta atacante pode atacar (regras de jogo)
                     if (cartaAtacante.podeAtacar()) {
-                        // Encontre a carta defensora na mesma posição no campo do defensor
                         Carta cartaDefensora = campoDefensor[linha][coluna];
                         
                         if (cartaDefensora != null) {
-                            // Aplique o dano ao jogador adversário (você pode ajustar o valor conforme suas regras)
-                            int dano = 1; // Exemplo: todas as cartas causam 1 ponto de dano
+                            int dano = 1; 
                             if (jogador == 1) {
                                 pontosVidaJogador2 -= dano;
                             } else if (jogador == 2) {
@@ -299,7 +294,6 @@ public class Arena {
                             }
                         }
                         
-                        // A carta atacante não pode atacar novamente no mesmo turno
                         cartaAtacante.setPodeAtacar(false);
                     }
                 }

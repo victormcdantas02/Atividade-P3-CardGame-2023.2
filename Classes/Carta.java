@@ -9,8 +9,9 @@ public class Carta {
     private HabilidadeC habilidade;
     private int quantidade; // Novo atributo para controlar a quantidade
     private int valorEmCardCoins;
+    private boolean podeAtacar;
 
-    public Carta(String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
+    public Carta(boolean podeAtacar, String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidade, int ataque, int defesa, int custo, int valorEmCardCoins) {
         this.nome = nome;
         this.imagem = imagem;
         this.tipo = tipo;
@@ -21,6 +22,11 @@ public class Carta {
         this.habilidade = habilidade;
         this.quantidade = 0; // Inicializa a quantidade como 0
         this.valorEmCardCoins = valorEmCardCoins;
+        this.podeAtacar = podeAtacar;
+    }
+
+    public boolean podeAtacar(){
+        return podeAtacar;
     }
 
     public int getQuantidade() {
@@ -62,6 +68,10 @@ public class Carta {
 
     public Raridade getRaridade() {
         return raridade;
+    }
+
+    public void setPodeAtacar(boolean podeAtacar) {
+        this.podeAtacar = podeAtacar;
     }
 
     public void setRaridade(Raridade raridade) {
