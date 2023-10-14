@@ -220,10 +220,91 @@ public class Arena {
     }
 
     private void realizarPosicionamento(int jogador) {
-        // Ilogica do posicionamente 
+        Carta[] maoDoJogador;
+        Carta[][] campoDoJogador;
+        int manaMaximaDoJogador;
+    
+        if (jogador == 1) {
+            maoDoJogador = maoJogador1;
+            campoDoJogador = campoJogador1;
+            manaMaximaDoJogador = manaMaximaJogador1;
+        } else if (jogador == 2) {
+            maoDoJogador = maoJogador2;
+            campoDoJogador = campoJogador2;
+            manaMaximaDoJogador = manaMaximaJogador2;
+        } else {
+            throw new IllegalArgumentException("Número de jogador inválido.");
+        }
+    
+        if (manaMaximaDoJogador >= 1) {
+            for (int linha = 0; linha < campoDoJogador.length; linha++) {
+                for (int coluna = 0; coluna < campoDoJogador[linha].length; coluna++) {
+                    if (campoDoJogador[linha][coluna] == null) {
+                        campoDoJogador[linha][coluna] = null;
+                        manaMaximaDoJogador -= 1;
+                        return;
+                    }
+                }
+            }
+        } else {
+            for (int linha = 1; linha < campoDoJogador.length; linha++) {
+                for (int coluna = 0; coluna < campoDoJogador[linha].length; coluna++) {
+                    if (campoDoJogador[linha][coluna] == null) {
+                        for (int i = 0; i < maoDoJogador.length; i++) {
+                            if (maoDoJogador[i] != null) {
+                                campoDoJogador[linha][coluna] = maoDoJogador[i];
+                                maoDoJogador[i] = null;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+    
 
     private void realizarAtaque(int jogador) {
-        // lógica de ataque
-    }   
+        Carta[][] campoAtacante;
+        Carta[][] campoDefensor;
+        
+        if (jogador == 1) {
+            campoAtacante = campoJogador1;
+            campoDefensor = campoJogador2;
+        } else if (jogador == 2) {
+            campoAtacante = campoJogador2;
+            campoDefensor = campoJogador1;
+        } else {
+            throw new IllegalArgumentException("Número de jogador inválido.");
+        }
+        
+        // Realize o ataque para cada posição no campo de batalha
+        for (int linha = 0; linha < campoAtacante.length; linha++) {
+            for (int coluna = 0; coluna < campoAtacante[linha].length; coluna++) {
+                Carta cartaAtacante = campoAtacante[linha][coluna];
+                
+                if (cartaAtacante != null) {
+                    // Verifique se a carta atacante pode atacar (regras de jogo)
+                    if (cartaAtacante.podeAtacar()) {
+                        // Encontre a carta defensora na mesma posição no campo do defensor
+                        Carta cartaDefensora = campoDefensor[linha][coluna];
+                        
+                        if (cartaDefensora != null) {
+                            // Aplique o dano ao jogador adversário (você pode ajustar o valor conforme suas regras)
+                            int dano = 1; // Exemplo: todas as cartas causam 1 ponto de dano
+                            if (jogador == 1) {
+                                pontosVidaJogador2 -= dano;
+                            } else if (jogador == 2) {
+                                pontosVidaJogador1 -= dano;
+                            }
+                        }
+                        
+                        // A carta atacante não pode atacar novamente no mesmo turno
+                        cartaAtacante.setPodeAtacar(false);
+                    }
+                }
+            }
+        }
+    }
+       
 }
