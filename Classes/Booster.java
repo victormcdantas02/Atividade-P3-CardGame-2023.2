@@ -6,15 +6,15 @@ public class Booster {
         double valorAleatorio = random.nextDouble() * 100;
 
         if (valorAleatorio <= Raridade.COMUM.getProbabilidade()) {
-            return new Carta("NomeComum", "ImagemComum", "TipoComum", Raridade.COMUM, null, 1, 1, 1, 1);
+            return new Carta(false, "NomeComum", "ImagemComum", "TipoComum", Raridade.COMUM, null, 1, 1, 1, 1);
         } else if (valorAleatorio <= Raridade.INCOMUM.getProbabilidade()) {
-            return new Carta("NomeIncomum", "ImagemIncomum", "TipoIncomum", Raridade.INCOMUM, null, 2, 2, 2, 2);
+            return new Carta(false, "NomeIncomum", "ImagemIncomum", "TipoIncomum", Raridade.INCOMUM, null, 2, 2, 2, 2);
         } else if (valorAleatorio <= Raridade.RARA.getProbabilidade()) {
-            return new Carta("NomeRara", "ImagemRara", "TipoRara", Raridade.RARA, null, 3, 3, 3, 3);
+            return new Carta(false, "NomeRara", "ImagemRara", "TipoRara", Raridade.RARA, null, 3, 3, 3, 3);
         } else if (valorAleatorio <= Raridade.MUITO_RARA.getProbabilidade()) {
-            return new Carta("NomeMuitoRara", "ImagemMuitoRara", "TipoMuitoRara", Raridade.MUITO_RARA, null, 4, 4, 4, 4);
+            return new Carta(false, "NomeMuitoRara", "ImagemMuitoRara", "TipoMuitoRara", Raridade.MUITO_RARA, null, 4, 4, 4, 4);
         } else {
-            return new Carta("NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 5, 5, 5, 5);
-        }
-    }
+            return new Carta(false, "NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 5, 5, 5, 5);
+        }
+    }
 }
