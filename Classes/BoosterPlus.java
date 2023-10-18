@@ -9,6 +9,6 @@ public class BoosterPlus extends Booster {
             return new CartaUnique(false, "NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 1, 1, 1, 1);
         } else {
             return null; // Não é uma carta única
-        }
-    }
+        }
+    }
 }

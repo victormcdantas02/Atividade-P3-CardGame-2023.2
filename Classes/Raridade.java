@@ -1,7 +1,6 @@
 import java.util.Random;
 
-public class Raridade {
-    public enum Enumerate {
+    public enum Raridade {
         COMUM(80),
         INCOMUM(15),
         RARA(4),
@@ -10,13 +9,12 @@ public class Raridade {
     
         private final double probabilidade;
     
-        private Enumerate(double probabilidade) {
+        private Raridade(double probabilidade) {
             this.probabilidade = probabilidade;
         }
     
         public double getProbabilidade() {
             return probabilidade;
         }
-    }
     }
 

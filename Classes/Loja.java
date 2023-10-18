@@ -89,22 +89,21 @@ public class Loja {
         }
     }
 
-
     public Carta gerarCartaAleatoria(Inventario inventario) {
         // Simulação de geração de uma carta aleatória
         Random random = new Random();
-    
+
         // Verifique se o inventário do usuário não está vazio
         Carta[] cartasDisponiveis = inventario.getCartas();
         if (cartasDisponiveis == null || cartasDisponiveis.length == 0) {
             System.out.println("Seu inventário de cartas está vazio.");
             return null;
         }
-    
+
         // Gere um índice aleatório para selecionar uma carta do inventário
         int indiceAleatorio = random.nextInt(cartasDisponiveis.length);
         Carta cartaAleatoria = cartasDisponiveis[indiceAleatorio];
-    
+
         // Crie uma nova carta com base na carta selecionada, modificando-a de acordo com a raridade
         Carta cartaGerada = new Carta(
             promocao, cartaAleatoria.getNome(),
@@ -117,9 +116,9 @@ public class Loja {
             cartaAleatoria.getCusto(),
             cartaAleatoria.getValorEmCardCoins()
         );
-    
+
         return cartaGerada;
-    }
+    }
     
     // Método para modificar a raridade com base nas probabilidades
     private Raridade modificarRaridade(Raridade raridadeOriginal) {
