@@ -107,19 +107,19 @@ public class Loja {
     
         // Crie uma nova carta com base na carta selecionada, modificando-a de acordo com a raridade
         Carta cartaGerada = new Carta(
-            cartaAleatoria.getNome(),
+            promocao, cartaAleatoria.getNome(),
             cartaAleatoria.getImagem(),
             cartaAleatoria.getTipo(),
             modificarRaridade(cartaAleatoria.getRaridade()), // Modifique a raridade com base nas probabilidades
             cartaAleatoria.getHabilidade(),
-            cartaAleatoria.getAtaque() + 1, // Adicione +1 no ataque
-            cartaAleatoria.getDefesa() + 1, // Adicione +1 na defesa
+            cartaAleatoria.getAtaque(), // Adicione +1 no ataque
+            cartaAleatoria.getDefesa(), // Adicione +1 na defesa
             cartaAleatoria.getCusto(),
             cartaAleatoria.getValorEmCardCoins()
         );
     
         return cartaGerada;
-    }
+    }
     
     // Método para modificar a raridade com base nas probabilidades
     private Raridade modificarRaridade(Raridade raridadeOriginal) {
