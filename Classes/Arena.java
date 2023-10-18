@@ -4,7 +4,7 @@ public class Arena {
     private Usuario jogador1;
     private Usuario jogador2;
     private Deck deckJogador1;
-    private Deck deckJogador2;
+    protected Deck deckJogador2;
     private Carta[][] campoJogador1;
     private Carta[][] campoJogador2;
     private int pontosVidaJogador1;
@@ -156,7 +156,7 @@ public class Arena {
                 deckDoJogador.embaralharCemiterio();
             }
 
-            int cartaIndex = random.nextInt(deckDoJogador.size());
+            int cartaIndex = random.nextInt(deckDoJogador.size);
             Carta cartaSacada = deckDoJogador.getCarta(cartaIndex);
             maoDoJogador[i] = cartaSacada;
             deckDoJogador.removerCarta(cartaIndex);
@@ -263,7 +263,7 @@ public class Arena {
         }
     }
     
-    private void realizarAtaque(int jogador) {
+    public void realizarAtaque(int jogador) {
         Carta[][] campoAtacante;
         Carta[][] campoDefensor;
         
