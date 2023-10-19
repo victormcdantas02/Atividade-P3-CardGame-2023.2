@@ -130,7 +130,7 @@ public class Arena {
         this.cemiterioJogador2 = cemiterioJogador2;
     }
 
-    public void sacarCartas(int jogador){
+    public void sacarCartas(Usuario jogador){
         int numeroDeCartasASacar = 7;
 
         Random random = new Random();
@@ -156,7 +156,7 @@ public class Arena {
                 deckDoJogador.embaralharCemiterio();
             }
 
-            int cartaIndex = random.nextInt(deckDoJogador.size);
+            int cartaIndex = random.nextInt(deckDoJogador.getSize());
             Carta cartaSacada = deckDoJogador.getCarta(cartaIndex);
             maoDoJogador[i] = cartaSacada;
             deckDoJogador.removerCarta(cartaIndex);

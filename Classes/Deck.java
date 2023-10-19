@@ -2,6 +2,7 @@ public class Deck {
     private String nome;
     private boolean disponibilidade = false;
     private Carta[] cartas = new Carta[60]; // Tamanho máximo do deck
+    private int size;
 
     public Deck(String nome) {
         this.nome = nome;
@@ -17,6 +18,11 @@ public class Deck {
 
     public Carta[] getCartas() {
         return cartas;
+    }
+
+    public boolean isEmpty() {
+        // Verifique se o deck está vazio
+        return size == 0;
     }
 
     private void verificarDisponibilidade() {
@@ -35,7 +41,7 @@ public class Deck {
         }
 
         // Verificar se o deck já contém 60 cartas
-        if (cartas.length >= 60) {
+        if (size >= 60) {
             System.out.println("Este deck já contém o número máximo de cartas (60).");
             return false;
         }
@@ -46,6 +52,7 @@ public class Deck {
             for (int i = 0; i < cartas.length; i++) {
                 if (cartas[i] == null) {
                     cartas[i] = carta;
+                    size++; // Aumentar o tamanho do deck
                     System.out.println("Carta adicionada ao deck com sucesso.");
                     verificarDisponibilidade();
                     return true;
@@ -64,21 +71,22 @@ public class Deck {
             System.out.println("Este deck já está disponível para uso.");
             return false;
         }
-    
+
         // Verificar se o deck contém a carta
         for (int i = 0; i < cartas.length; i++) {
             if (cartas[i] != null && cartas[i].getNome().equalsIgnoreCase(carta.getNome())) {
                 // Remover a carta do deck
                 cartas[i] = null;
+                size--; // Reduzir o tamanho do deck
                 System.out.println("Carta removida do deck com sucesso.");
-    
+
                 // Adicionar a carta de volta ao inventário
                 inventario.adicionarCarta(carta);
                 verificarDisponibilidade();
                 return true;
             }
         }
-    
+
         System.out.println("Esta carta não está no deck.");
         return false;
     }
