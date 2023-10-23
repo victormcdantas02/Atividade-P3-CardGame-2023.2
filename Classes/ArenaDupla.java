@@ -70,6 +70,6 @@ public class ArenaDupla extends Arena {
     }
 
     private void realizarAtaque(int jogador, Carta[] aliado) {
-        // Implemente a lógica de ataque para os jogadores 3 e 4
-    }
+        // Implemente a lógica de ataque para os jogadores 3 e 
+    }
 }

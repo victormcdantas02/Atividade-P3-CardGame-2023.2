@@ -15,6 +15,6 @@ public class Booster {
             return new Carta(false, "NomeMuitoRara", "ImagemMuitoRara", "TipoMuitoRara", Raridade.MUITO_RARA, null, 4, 4, 4, 4);
         } else {
             return new Carta(false, "NomeUnica", "ImagemUnica", "TipoUnica", Raridade.EPICA, null, 5, 5, 5, 5);
-        }
-    }
+        }
+    }
 }
