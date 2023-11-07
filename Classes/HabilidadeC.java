@@ -1,4 +1,3 @@
-
 public enum HabilidadeC {
     Lapada,
     Esquiva,
