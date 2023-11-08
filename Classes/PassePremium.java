@@ -1,3 +1,3 @@
-public abstract class PassePremium extends Progresso{
+public class PassePremium extends Progresso{
     
 }
