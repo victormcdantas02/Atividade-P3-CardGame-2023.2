@@ -68,7 +68,7 @@ public class Loja {
             int quantidadeCartasBooster = 12;
     
             for (int i = 0; i < quantidadeCartasBooster; i++) {
-                Carta cartaAleatoria = boosterPlus.gerarCartaAleatoria(inventario);
+                Carta cartaAleatoria = boosterPlus.gerarCartaAleatoria();
     
                 // Verifica se o inventário está cheio
                 if (inventario.estaCheio()) {
