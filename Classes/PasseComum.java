@@ -25,32 +25,38 @@ public class PasseComum extends Progresso {
     }
 
     @Override
-    public void entregarPremiacao() {
+    public void entregarPremiacao(Usuario user) {
         if (!terminado) {
-            Booster booster = new Booster();
-             // Crie uma instância do Booster para gerar uma carta aleatória
-             Booster boosterPasseComum = new Booster();
+            Booster boosterPasseComum = new Booster();
 
              // Gere uma carta aleatória diretamente do Booster
-             Inventario cartaAleatoria = boosterPasseComum.gerarCartaAleatoria();
+             Carta cartaAleatoria = boosterPasseComum.gerarCartaAleatoria();
  
              // Acesse o inventário do usuário e adicione a carta gerada
-             Inventario inventarioUsuario = usuario.getInventario();
+             Inventario inventarioUsuario = user.getInventario();
              boolean adicionadaComSucesso = inventarioUsuario.adicionarCarta(cartaAleatoria);
+
+             if (adicionadaComSucesso) {
+                System.out.println("Carta adicionada ao inventário do jogador: " + cartaAleatoria.getNome());
+            } else {
+                System.out.println("Não foi possível adicionar a carta ao inventário. O inventário pode estar cheio.");
+            }
         }
     }
+    
 
     @Override
-    public void progresso() {
+    public void progresso(Usuario user) {
         // Uma vitória aumenta um nível no passe de batalha
         nivel++;
+        user.setNivel(nivel);
         System.out.println("Você ganhou uma vitória! Nível do passe: " + nivel);
 
-        if (nivel >= premiacoes.length) {
+        if (user.getNivel() >= premiacoes.length) {
             System.out.println("Passe de batalha concluído. Você não ganhará mais premiações.");
             setTerminado(true);
         } else {
-            entregarPremiacao();
+            entregarPremiacao(user);
         }
     }
 }
