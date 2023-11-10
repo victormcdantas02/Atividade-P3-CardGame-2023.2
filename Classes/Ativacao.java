@@ -1,4 +1,4 @@
 public interface Ativacao {
-    void ativar();
+   public void ativar(Carta habilidade);
     
 }
