@@ -125,9 +125,13 @@ public class Carta implements Ativacao {
     }
     //
 
-    public void ativar() {
+   public void ativar(Carta cartaRecebida) {
         // Implementação da ativação da Carta comum
-        System.out.println("Ativação da Carta comum");
+        if(cartaRecebida.getHabilidade() != null){
+        System.out.println("Ativação da Habilidade da Carta comum- " + cartaRecebida.getHabilidade() + " ativada " );
+        }else{
+            System.out.println("carta não possui Habilidade");
+        }
     }
     
 }
