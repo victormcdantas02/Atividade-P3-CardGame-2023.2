@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Booster {
-    public Carta gerarCartaAleatoria(Inventario inventario) {
+    public Carta gerarCartaAleatoria() {
         Random random = new Random();
         double valorAleatorio = random.nextDouble() * 100;
 
