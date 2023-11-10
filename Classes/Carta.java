@@ -1,4 +1,4 @@
-public class Carta {
+public class Carta implements Ativacao {
     private String nome;
     private String imagem;
     private String tipo;
@@ -122,6 +122,12 @@ public class Carta {
 
     public void setValorEmCardCoins(int valorEmCardCoins) {
         this.valorEmCardCoins = valorEmCardCoins;
+    }
+    //
+
+    public void ativar() {
+        // Implementação da ativação da Carta comum
+        System.out.println("Ativação da Carta comum");
     }
     
 }
