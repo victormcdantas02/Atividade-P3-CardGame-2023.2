@@ -4,16 +4,25 @@ public class Batalha {
             System.out.println("A carta atacante não pode atacar neste turno.");
             return;
         }
+
         int dano = atacante.getAtaque();
         defensor.setDefesa(defensor.getDefesa() - dano);
+
         if (defensor.getDefesa() <= 0) {
             System.out.println("A carta defensora foi destruída.");
+
+            // Chama a ativação da habilidade da carta atacante
+            if (atacante instanceof Ativacao) {
+                ((Ativacao) atacante).ativar(atacante);
+            }
+
             if (jogadorDefensor == 1) {
                 enviarParaCemiterio(defensor, arena.getCemiterioJogador1());
             } else if (jogadorDefensor == 2) {
                 enviarParaCemiterio(defensor, arena.getCemiterioJogador2());
             }
         }
+
         atacante.setPodeAtacar(false);
         fimDeTurno(arena);
     }
