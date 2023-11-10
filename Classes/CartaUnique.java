@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class CartaUnique extends Carta {
+public class CartaUnique extends Carta implements Ativacao {
     private HabilidadeC habilidadeExtra;
 
     public CartaUnique(boolean podeAtacar, String nome, String imagem, String tipo, Raridade raridade, HabilidadeC habilidadeExtra, int ataque, int defesa, int custo, int valorEmCardCoins) {
