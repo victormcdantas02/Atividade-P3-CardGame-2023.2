@@ -11,13 +11,14 @@ public class Usuario {
     private Inventario inventario;
     private Deck deckAtivo; // Adicione um atributo para representar o deck ativo do usuário
 
-    public Usuario(String nome, String cpf, String senha, String sexo, String email, int idade) {
+    public Usuario(String nome, String cpf, String senha, String sexo, String email, int idade, int nivel) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
         this.sexo = sexo;
         this.email = email;
         this.idade = idade;
+        this.nivel = nivel;
         this.decks = new Deck[5];
         this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
@@ -55,6 +56,9 @@ public class Usuario {
 
     public int getNivel() {
         return nivel;
+    }
+    public void setNivel(int nivel){
+        this.nivel = nivel;
     }
 
     public int getCardCoins() {
