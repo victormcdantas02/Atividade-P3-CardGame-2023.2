@@ -1,5 +1,5 @@
 public class PassePremium extends Progresso{
-    public int nivel;
+    private int nivel;
 
     public PassePremium() {
         super();
