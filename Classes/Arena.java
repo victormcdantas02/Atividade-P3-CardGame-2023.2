@@ -1,12 +1,12 @@
 import java.util.Random;
 
 public class Arena {
-    private Usuario jogador1;
-    private Usuario jogador2;
+    protected Usuario jogador1;
+    protected Usuario jogador2;
     private Deck deckJogador1;
     protected Deck deckJogador2;
-    private Carta[][] campoJogador1;
-    private Carta[][] campoJogador2;
+    protected Carta[][] campoJogador1;
+    protected Carta[][] campoJogador2;
     private int pontosVidaJogador1;
     private int pontosVidaJogador2;
     private Carta[] maoJogador1;

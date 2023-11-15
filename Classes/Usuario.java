@@ -11,6 +11,8 @@ public class Usuario {
     private Inventario inventario;
     private Deck deckAtivo; // Adicione um atributo para representar o deck ativo do usuário
 
+    private Arena arena;
+
     public Usuario(String nome, String cpf, String senha, String sexo, String email, int idade, int nivel) {
         this.nome = nome;
         this.cpf = cpf;
@@ -21,6 +23,7 @@ public class Usuario {
         this.idade = idade;
         this.decks = new Deck[5];
         this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
+        this.arena = arena;
     }
     
     public String getNome(){
@@ -79,6 +82,14 @@ public class Usuario {
 
     public Deck getDeckAtivo() {
         return deckAtivo;
+    }
+
+    public Carta[] getMaoJogador1() {
+        return arena.getMaoJogador1(); 
+    }
+
+    public Carta[] getMaoJogador2() {
+        return arena.getMaoJogador2();
     }
 
     public void selecionarDeckAtivo(int indice) {
