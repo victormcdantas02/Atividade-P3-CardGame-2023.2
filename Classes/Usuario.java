@@ -17,12 +17,12 @@ public class Usuario {
         this.senha = senha;
         this.sexo = sexo;
         this.email = email;
-	this.nivel = nivel;
+	    this.nivel = nivel;
         this.idade = idade;
-        this.nivel = nivel;
         this.decks = new Deck[5];
         this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
+    
     public String getNome(){
         return nome;
     }
