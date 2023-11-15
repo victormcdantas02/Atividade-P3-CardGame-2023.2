@@ -19,6 +19,7 @@ public class Usuario {
         this.email = email;
 	this.nivel = nivel;
         this.idade = idade;
+        this.nivel = nivel;
         this.decks = new Deck[5];
         this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
     }
@@ -59,6 +60,9 @@ public class Usuario {
 
     public int getNivel() {
         return nivel;
+    }
+    public void setNivel(int nivel){
+        this.nivel = nivel;
     }
 
     public int getCardCoins() {
