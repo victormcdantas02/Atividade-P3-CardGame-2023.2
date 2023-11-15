@@ -159,7 +159,7 @@ public class Arena {
             int cartaIndex = random.nextInt(deckDoJogador.getSize());
             Carta cartaSacada = deckDoJogador.getCarta(cartaIndex);
             maoDoJogador[i] = cartaSacada;
-            deckDoJogador.removerCarta(cartaIndex);
+            deckDoJogador.removerCarta(cartaSacada, null);
         }
     }
 
@@ -213,7 +213,7 @@ public class Arena {
                     break;
                 }
             }
-            deckDoJogador.removerCarta(indiceAleatorio);
+            deckDoJogador.removerCarta(cartaComprada, null);
             manaMaximaDoJogador += 1;
         } else {
             System.out.println("O deck está vazio. Não é possível comprar mais cartas.");

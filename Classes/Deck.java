@@ -71,6 +71,15 @@ public class Deck {
         return false;
     }
 
+    public Carta getCarta(int index) {
+        if (index >= 0 && index < size) {
+            return cartas[index];
+        } else {
+            throw new IndexOutOfBoundsException("Índice inválido para obter carta do deck.");
+        }
+    }
+    
+
     public boolean removerCarta(Carta carta, Inventario inventario) {
         // Verificar se o deck já está disponível
         if (disponibilidade) {
