@@ -26,7 +26,7 @@ public class Loja {
         this.codigoVerificador = codigoVerificador;
     }
 
-    public void compraDeBooster(Usuario usuario, Inventario inventario) {
+    public void compraDeBooster(Usuario usuario, Inventario inventario)throws InsuficientCoinException {
         // Verificar a quantidade de cardcoins do usuário
         int cardcoinsDoUsuario = usuario.getCardCoins();
         int precoBooster = promocao ? 150 : 100; // Preço do booster com ou sem promoção
@@ -55,7 +55,7 @@ public class Loja {
 
             System.out.println("Compra bem-sucedida! Você recebeu " + quantidadeCartasBooster + " cartas no seu deck.");
         } else {
-            System.out.println("Você não possui cardcoins suficientes para comprar um booster.");
+            throw new InsuficientCoinException("Você não possui cardcoins suficientes para comprar um booster.");
         }
     }
 

@@ -137,10 +137,10 @@ public class Arena {
 
         Carta[] maoDoJogador;
         Deck deckDoJogador;
-        if (jogador == 1) {
+        if (jogador == jogador1) {
             maoDoJogador = maoJogador1;
             deckDoJogador = deckJogador1;
-        } else if (jogador == 2) {
+        } else if (jogador == jogador2) {
             maoDoJogador = maoJogador2;
             deckDoJogador = deckJogador2;
         } else {
@@ -162,6 +162,7 @@ public class Arena {
             deckDoJogador.removerCarta(cartaIndex);
         }
     }
+
 
     public int inicio() {
         Random random = new Random();
@@ -204,7 +205,7 @@ public class Arena {
 
         if (!deckDoJogador.isEmpty()) {
             Random random = new Random();
-            int indiceAleatorio = random.nextInt(deckDoJogador.size());
+            int indiceAleatorio = random.nextInt(deckDoJogador.getSize());
             Carta cartaComprada = deckDoJogador.getCarta(indiceAleatorio);
             for (int i = 0; i < maoDoJogador.length; i++) {
                 if (maoDoJogador[i] == null) {

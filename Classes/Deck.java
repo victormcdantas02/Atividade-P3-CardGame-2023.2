@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Deck {
     private String nome;
     private boolean disponibilidade = false;
@@ -6,6 +8,10 @@ public class Deck {
 
     public Deck(String nome) {
         this.nome = nome;
+    }
+
+    public int getSize(){
+        return size;
     }
 
     public String getNome() {
@@ -124,4 +130,14 @@ public class Deck {
         return false; // O deck não atingiu o número máximo de repetições desta carta
     }
 
+    public void embaralharCemiterio() {
+        Random random = new Random();
+
+        for (int i = size - 1; i > 0; i--) {
+            int indiceAleatorio = random.nextInt(i + 1);
+            Carta temp = cartas[i];
+            cartas[i] = cartas[indiceAleatorio];
+            cartas[indiceAleatorio] = temp;
+        }
+    }
 }
