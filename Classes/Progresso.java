@@ -1,7 +1,7 @@
 public abstract class Progresso {
     protected String[] premiacoes;
     protected int premiacaoAtual;
- public Progresso() {
+    public Progresso() {
         this.premiacoes = new String[60];
         this.premiacaoAtual = 0;
     }

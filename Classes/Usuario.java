@@ -5,7 +5,7 @@ public class Usuario {
     private int idade;
     private String sexo;
     private String email;
-    private int nivel = 1;
+    private int nivel = 0;
     private int cardCoins = 0;
     private Deck[] decks;
     private Inventario inventario;
@@ -17,6 +17,7 @@ public class Usuario {
         this.senha = senha;
         this.sexo = sexo;
         this.email = email;
+	this.nivel = nivel;
         this.idade = idade;
         this.nivel = nivel;
         this.decks = new Deck[5];
@@ -33,6 +34,9 @@ public class Usuario {
     }
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    public void setNivel(int nivel) {
+	this.nivel = nivel;
     }
     
     public int getIdade() {
