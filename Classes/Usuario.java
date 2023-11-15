@@ -35,10 +35,6 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public void setNivel(int nivel) {
-	this.nivel = nivel;
-    }
-    
     public int getIdade() {
         return idade;
     }
