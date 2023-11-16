@@ -25,6 +25,8 @@ public class Usuario {
         this.inventario = new Inventario(new Carta[200], 1, 0); // Aqui você pode ajustar os valores iniciais do inventário
         this.arena = arena;
     }
+    public Usuario() {
+    }
     
     public String getNome(){
         return nome;
@@ -41,6 +43,16 @@ public class Usuario {
     public int getIdade() {
         return idade;
     }
+    public String getCpf() {
+        return cpf;
+    }
+    public Arena getArena() {
+        return arena;
+    }
+    public void setArena(Arena arena) {
+        this.arena = arena;
+    }
+    
     public void setIdade(int idade) {
         this.idade = idade;
     }
@@ -61,7 +73,7 @@ public class Usuario {
         return nivel;
     }
     public void setNivel(int nivel){
-        this.nivel = nivel;
+        this.nivel = nivel ;
     }
 
     public int getCardCoins() {
@@ -71,6 +83,20 @@ public class Usuario {
     public void setCardCoins(int cardCoins) {
         this.cardCoins = cardCoins;
     }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public void setDeckAtivo(Deck deckAtivo) {
+        this.deckAtivo = deckAtivo;
+    }
+    public void setDecks(Deck[] decks) {
+        this.decks = decks;
+    }
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+    
 
     public Deck[] getDecks() {
         return decks;
@@ -156,10 +182,18 @@ public class Usuario {
     }
 
 
-    @Override
     public String toString() {
-        return "Nome: " + nome + "\nCPF: " + cpf + "\nNível: " + nivel + "\nCardCoins: " + cardCoins;
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", senha='" + senha + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", email='" + email + '\'' +
+                ", idade=" + idade +
+                ", nivel=" + nivel +
+                '}';
     }
+
 	public int getPontosVida() {
 		return 0;
 	}
