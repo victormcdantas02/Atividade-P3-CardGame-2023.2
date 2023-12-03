@@ -57,6 +57,18 @@ public class ArenaDupla extends Arena {
     public void setCampoJogador4(Carta[][] campoJogador4){
         this.campoJogador4 = campoJogador4;
     }
+    public Usuario getJogador3(){
+        return jogador3;
+    }
+    public void setJogador3(Usuario jogador3){
+        this.jogador3 = jogador3;
+    }
+    public Usuario getJogador4(){
+        return jogador4;
+    }
+    public void setJogador4(Usuario jogador4){
+        this.jogador4 = jogador4;
+    }
 
     @Override
     public void sacarCartas(Usuario jogador) {
