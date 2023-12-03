@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class BoosterPlus extends Booster {
+public class BoosterPlusModel extends Booster {
     public Carta gerarCartaUnica() {
         Random random = new Random();
         double valorAleatorio = random.nextDouble() * 100;

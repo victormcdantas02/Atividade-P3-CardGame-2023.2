@@ -60,7 +60,7 @@ public class Loja {
     }
 
     public void compraDeBoosterPlus(Usuario usuario, Inventario inventario) {
-        BoosterPlus boosterPlus = new BoosterPlus();
+        BoosterPlusModel boosterPlus = new BoosterPlusModel();
         int cardcoinsDoUsuario = usuario.getCardCoins();
         int precoBoosterPlus = promocao ? 150 : 125; // Preço do booster plus com ou sem promoção
     

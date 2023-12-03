@@ -14,7 +14,7 @@ public class PassePremium extends Progresso{
     public void entregarPremiacao(Usuario user) {
         if (nivel % 5 == 0) {
             // Prêmio especial (booster especial) a cada 5 níveis
-            BoosterPlus boosterEspecial = new BoosterPlus();
+            BoosterPlusModel boosterEspecial = new BoosterPlusModel();
             Carta cartaEspecial = boosterEspecial.gerarCartaAleatoria();
             
             Inventario inventarioUsuario = user.getInventario();

@@ -1,5 +1,4 @@
-
-public class BatalhaModelo {
+public class BatalhaModel {
     public static void realizarBatalha(Carta atacante, Carta defensor, int jogadorDefensor, Arena arena) {
         if (!atacante.podeAtacar()) {
             BatalhaView.imprimirMensagem("A carta atacante não pode atacar neste turno.");
