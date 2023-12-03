@@ -1,7 +1,8 @@
-public class Batalha {
+
+public class BatalhaModelo {
     public static void realizarBatalha(Carta atacante, Carta defensor, int jogadorDefensor, Arena arena) {
         if (!atacante.podeAtacar()) {
-            System.out.println("A carta atacante não pode atacar neste turno.");
+            BatalhaView.imprimirMensagem("A carta atacante não pode atacar neste turno.");
             return;
         }
 
@@ -9,7 +10,7 @@ public class Batalha {
         defensor.setDefesa(defensor.getDefesa() - dano);
 
         if (defensor.getDefesa() <= 0) {
-            System.out.println("A carta defensora foi destruída.");
+            BatalhaView.imprimirMensagem("A carta defensora foi destruída.");
 
             // Chama a ativação da habilidade da carta atacante
             if (atacante instanceof Ativacao) {
@@ -41,11 +42,11 @@ public class Batalha {
         int pontosVidaJogador2 = arena.getPontosVidaJogador2();
 
         if (pontosVidaJogador1 < 1) {
-            System.out.println("Jogador 2 é o vencedor");
+            BatalhaView.imprimirMensagem("Jogador 2 é o vencedor");
             darCardCoins(arena, 2, 100);
             darCardCoins(arena, 1, 10);
         } else if (pontosVidaJogador2 < 1) {
-            System.out.println("Jogador 1 é o vencedor");
+            BatalhaView.imprimirMensagem("Jogador 1 é o vencedor");
             darCardCoins(arena, 1, 100);
             darCardCoins(arena, 2, 10);
         }
