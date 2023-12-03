@@ -54,4 +54,8 @@ public class PassePremium extends Progresso{
             entregarPremiacao(user);
         }
     }
+
+    public boolean isTerminado() {
+        return false;
+    }
 }
