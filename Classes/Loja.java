@@ -120,7 +120,6 @@ public class Loja {
         return cartaGerada;
     }
     
-    // Método para modificar a raridade com base nas probabilidades
     private Raridade modificarRaridade(Raridade raridadeOriginal) {
         Random random = new Random();
         double valorAleatorio = random.nextDouble() * 100;
