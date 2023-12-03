@@ -8,7 +8,7 @@ public class BoosterPlusController extends BoosterController {
         this.boosterPlusView = boosterPlusView;
     }
 
-    public void gerarEExibirCartaUnica() {
+    public void gerarExibirCartaUnica() {
         Carta cartaUnica = boosterPlusModel.gerarCartaUnica();
         boosterPlusView.exibirCartaUnica(cartaUnica);
     }
