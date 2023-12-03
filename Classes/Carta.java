@@ -20,7 +20,7 @@ public class Carta implements Ativacao {
         this.defesa = defesa;
         this.custo = custo;
         this.habilidade = habilidade;
-        this.quantidade = 0; // Inicializa a quantidade como 0
+        this.quantidade = 0; 
         this.valorEmCardCoins = valorEmCardCoins;
         this.podeAtacar = podeAtacar;
     }
